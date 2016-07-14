@@ -27,8 +27,19 @@ export class Discoverer {
         }
     }
 
-    getEndpoint() {
+    async getEndpointAsync(timeout = 30000, retryInterval = 500) {
+        let startTime = new Date();
+
         let endpoint = this.endpoints.shift();
+        while (!endpoint) {
+            if ((new Date() - startTime) > timeout) {
+                throw new Error('Could not find backend endpoint');
+            }
+
+            await Bluebird.delay(retryInterval);
+
+            endpoint = this.endpoints.shift();
+        }
         this.endpoints.push(endpoint);
 
         return endpoint;
