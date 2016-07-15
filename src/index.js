@@ -1,5 +1,6 @@
 require('source-map-support').install();
 
+export { Enum } from './lib/enum';
 export { Model } from './lib/model';
 export { ServerTransport, ClientTransport } from './lib/transport';
 export { ServerProtocol, ClientProtocol } from './lib/protocol';
