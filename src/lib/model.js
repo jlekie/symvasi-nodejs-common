@@ -7,7 +7,7 @@ export class Model {
             let prop = protocol.readModelPropertyStart();
             
             if (!this.readPropertyValue(protocol, prop)) {
-                throw new Error(`Property "${prop.Name}" not recognized`);
+                throw new Error(`Property "${prop.name}" not recognized`);
             }
             protocol.readModelPropertyEnd();
         }
