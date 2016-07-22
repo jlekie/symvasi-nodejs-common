@@ -1,5 +1,6 @@
 export class Enum {
-    constructor(name) {
-        this.name = name;
+    constructor(value, nameMappings) {
+        this.literalValue = value;
+        this.name = nameMappings[value];
     }
 }
